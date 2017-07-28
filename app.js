@@ -24,20 +24,15 @@ app.use(session({ //what is this doing?
 
 app.get('/', function(req, res){
   if (req.session && req.session.admin){//admin?
-    res.redirect('/root');
+    res.redirect('/');
   }else{
     res.redirect('/login');
   }
 });
 
-// let randomImage = function(){
-//   var images = ["http://www.fillmurray.com/200/300", 'https://images-na.ssl-images-amazon.com/images/I/41oq%2BCg32iL._SY300_.jpg']
-//   let randomIndex = (Math.random() > 0.5) ? 1 : 0;
-//   return images[randomIndex];
-// }
-//
+
 let userInfo = {
-  'name': 'Ochanya',
+  'username': 'Ochanya',
   'password': '123'
 }
 
@@ -49,7 +44,7 @@ app.get('/login',function(req, res){
 app.post('/login',function(req,res){
   if (req.body.name === userInfo.name && req.body.password ===userInfo.password){
     req.session.admin = true;
-    res.redirect('/root');
+    res.redirect('/');
   }
 });
 
