@@ -24,7 +24,7 @@ app.use(session({ //what is this doing?
 
 app.get('/', function(req, res){
   if (req.session && req.session.admin){//admin?
-    res.render('root');
+    res.render('root', {userInfo: userInfo});
   }else{
     res.redirect('/login');
   }
@@ -57,7 +57,7 @@ let auth = function(req, res, next){
 }
 
 app.get('/', auth, function(req, res){
-  res.render('root');
+  res.render('root', {userInfo: userInfo});
 });
 
 app.post('/logout', function(req,res){
