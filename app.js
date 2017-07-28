@@ -24,7 +24,7 @@ app.use(session({ //what is this doing?
 
 app.get('/', function(req, res){
   if (req.session && req.session.admin){//admin?
-    res.redirect('/');
+    res.render('root');
   }else{
     res.redirect('/login');
   }
